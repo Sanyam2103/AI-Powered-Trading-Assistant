@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trading Assistant</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Trading Assistant</h1>
+            <div class="status-indicator" id="connectionStatus">
+                <span class="status-dot"></span>
+                <span id="statusText">Disconnected</span>
+            </div>
+        </header>
+
+        <div class="api-section">
+            <label for="apiKey">OpenAI API Key:</label>
+            <div class="input-group">
+                <input type="password" id="apiKey" placeholder="Enter your OpenAI API key">
+                <button id="saveApiKey">Save</button>
+            </div>
+            <small class="help-text">
+                Get your API key from <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a>
+            </small>
+        </div>
+
+        <div class="command-section">
+            <label for="userCommand">Enter your command:</label>
+            <div class="input-group">
+                <textarea id="userCommand" placeholder="e.g., 'Show me the current price of AAPL' or 'Find the best performing stock today'" rows="3"></textarea>
+                <button id="executeCommand" disabled>Execute</button>
+            </div>
+
+            <div class="quick-commands">
+                <h4>Quick Commands:</h4>
+                <div class="command-buttons">
+                    <button class="quick-btn" data-command="What is the current stock price?">Current Price</button>
+                    <button class="quick-btn" data-command="Show me the stock performance today">Today's Performance</button>
+                    <button class="quick-btn" data-command="What are the key statistics for this stock?">Key Stats</button>
+                    <button class="quick-btn" data-command="Analyze the recent price trend">Price Trend</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="response-section">
+            <div id="loadingIndicator" class="loading hidden">
+                <div class="spinner"></div>
+                <span>Analyzing...</span>
+            </div>
+            <div id="responseArea" class="response-area hidden">
+                <h4>AI Response:</h4>
+                <div id="responseContent"></div>
+            </div>
+            <div id="actionArea" class="action-area hidden">
+                <h4>Suggested Actions:</h4>
+                <div id="actionButtons"></div>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <details>
+                <summary>Advanced Settings</summary>
+                <div class="setting-item">
+                    <label for="model">AI Model:</label>
+                    <input type="hidden" id="model" value="chat-bison-001">
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="maxTokens">Max Response Length:</label>
+                    <input type="range" id="maxTokens" min="100" max="1000" value="500">
+                    <span id="tokensValue">500</span> tokens
+                </div>
+            </details>
+        </div>
+
+       <footer>
+    <div class="info">
+        <small>Supports TradingView • Powered by Google Gemini</small>
+
+    </div>  
+        </footer>
+
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
